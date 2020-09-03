@@ -1,0 +1,26 @@
+.bg {
+  &-primary {
+    background-color: $primary !important;
+  }
+  &-secondary {
+    background-color: $secondary !important;
+  }
+  &-info {
+    background-color: $info !important;
+  }
+  &-success {
+    background-color: $success !important;
+  }
+  &-warning {
+    background-color: $warning !important;
+  }
+  &-danger {
+    background-color: $danger !important;
+  }
+  &-dark {
+    background-color: $black !important;
+  }
+  &-light {
+    background-color: $white !important;
+  }
+}

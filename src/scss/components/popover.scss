@@ -1,0 +1,9 @@
+.popover-header {
+  background-color: $dark;
+  border-color: $dark;
+}
+
+.popover-body {
+  color: $light;
+  background: lighten($dark, 10%);
+}

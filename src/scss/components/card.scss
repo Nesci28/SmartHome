@@ -1,0 +1,37 @@
+.card {
+  background-color: darken($dark, 10%);
+}
+
+.border {
+  &-primary {
+    border: $primary 1px solid !important;
+  }
+
+  &-secondary {
+    border: $secondary 1px solid !important;
+  }
+
+  &-info {
+    border: $info 1px solid !important;
+  }
+
+  &-success {
+    border: $success 1px solid !important;
+  }
+
+  &-warning {
+    border: $warning 1px solid !important;
+  }
+
+  &-danger {
+    border: $danger 1px solid !important;
+  }
+
+  &-dark {
+    border: darken($dark, 10%) 1px solid !important;
+  }
+
+  &-light {
+    border: $light 1px solid !important;
+  }
+}

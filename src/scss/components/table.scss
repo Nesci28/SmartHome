@@ -1,0 +1,107 @@
+th {
+  background-color: $dark;
+  color: $light;
+}
+
+tbody tr th,
+tbody td {
+  color: $light;
+  background-color: darken($dark, 10%);
+}
+
+.table-hover tbody tr:hover {
+  color: $light;
+  background-color: $primary;
+}
+
+.table {
+  & th,
+  & td {
+    border-color: $black;
+  }
+
+  &-active th,
+  &-active td {
+    background-color: darken($dark, 20%);
+  }
+  &-primary th,
+  &-primary td {
+    background-color: $primary;
+    color: $dark;
+  }
+  &-secondary th,
+  &-secondary td {
+    background-color: $secondary;
+  }
+  &-info th,
+  &-info td {
+    background-color: $info;
+    color: $dark;
+  }
+  &-success th,
+  &-success td {
+    background-color: $success;
+    color: $dark;
+  }
+  &-warning th,
+  &-warning td {
+    background-color: $warning;
+    color: $dark;
+  }
+  &-danger th,
+  &-danger td {
+    background-color: $danger;
+  }
+  &-dark th,
+  &-dark td {
+    background-color: darken($dark, 10%);
+  }
+  &-light th,
+  &-light td {
+    background-color: $light;
+    color: $dark;
+  }
+}
+
+.table-hover .table {
+  &-primary:hover,
+  &-primary:hover > th,
+  &-primary:hover > td {
+    background-color: lighten($primary, 10%);
+  }
+  &-secondary:hover,
+  &-secondary:hover > th,
+  &-secondary:hover > td {
+    background-color: lighten($secondary, 10%);
+  }
+  &-info:hover,
+  &-info:hover > th,
+  &-info:hover > td {
+    background-color: lighten($info, 10%);
+  }
+  &-success:hover,
+  &-success:hover > th,
+  &-success:hover > td {
+    background-color: lighten($success, 10%);
+  }
+  &-warning:hover,
+  &-warning:hover > th,
+  &-warning:hover > td {
+    background-color: lighten($warning, 10%);
+  }
+  &-danger:hover,
+  &-danger:hover > th,
+  &-danger:hover > td {
+    background-color: lighten($danger, 10%);
+  }
+  &-light:hover,
+  &-light:hover > th,
+  &-light:hover > td {
+    background-color: lighten($light, 10%);
+  }
+  &-dark:hover,
+  &-dark:hover > th,
+  &-dark:hover > td {
+    background-color: lighten($dark, 10%);
+  }
+}

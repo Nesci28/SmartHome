@@ -1,0 +1,228 @@
+.btn {
+  border: none;
+  outline: none;
+  position: relative;
+  z-index: 0;
+  border-radius: 5px;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-info,
+.btn-success,
+.btn-warning,
+.btn-danger,
+.btn-dark,
+.btn-light,
+.btn-primary:after,
+.btn-secondary:after,
+.btn-info:after,
+.btn-success:after,
+.btn-warning:after,
+.btn-danger:after,
+.btn-dark:after,
+.btn-light:after {
+  color: $light;
+  background: $dark;
+}
+
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-info,
+.btn-outline-success,
+.btn-outline-warning,
+.btn-outline-danger,
+.btn-outline-dark,
+.btn-outline-light,
+.btn-outline-primary:after,
+.btn-outline-secondary:after,
+.btn-outline-info:after,
+.btn-outline-success:after,
+.btn-outline-warning:after,
+.btn-outline-danger:after,
+.btn-outline-dark:after,
+.btn-outline-light:after {
+  background: $black;
+  color: $light;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+.btn_before {
+  content: "";
+  border-radius: 5px;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400% !important;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.btn-primary:before,
+.btn-outline-primary:before {
+  @extend .btn_before;
+  background: linear-gradient(
+    45deg,
+    lighten($primary, 30),
+    lighten($primary, 15),
+    $primary,
+    darken($primary, 30),
+    darken($primary, 50),
+    darken($primary, 30),
+    $primary,
+    lighten($primary, 15)
+  );
+}
+
+.btn-secondary:before,
+.btn-outline-secondary:before {
+  @extend .btn_before;
+  background: linear-gradient(
+    45deg,
+    lighten($secondary, 30),
+    lighten($secondary, 15),
+    $secondary,
+    darken($secondary, 30),
+    darken($secondary, 50),
+    darken($secondary, 30),
+    $secondary,
+    lighten($secondary, 15)
+  );
+}
+
+.btn-info:before,
+.btn-outline-info:before {
+  @extend .btn_before;
+  background: linear-gradient(
+    45deg,
+    lighten($info, 30),
+    lighten($info, 15),
+    $info,
+    darken($info, 30),
+    darken($info, 50),
+    darken($info, 30),
+    $info,
+    lighten($info, 15)
+  );
+}
+
+.btn-success:before,
+.btn-outline-success:before {
+  @extend .btn_before;
+  background: linear-gradient(
+    45deg,
+    lighten($success, 30),
+    lighten($success, 15),
+    $success,
+    darken($success, 30),
+    darken($success, 50),
+    darken($success, 30),
+    $success,
+    lighten($success, 15)
+  );
+}
+
+.btn-warning:before,
+.btn-outline-warning:before {
+  @extend .btn_before;
+  background: linear-gradient(
+    45deg,
+    lighten($warning, 30),
+    lighten($warning, 15),
+    $warning,
+    darken($warning, 30),
+    darken($warning, 50),
+    darken($warning, 30),
+    $warning,
+    lighten($warning, 15)
+  );
+}
+
+.btn-danger:before,
+.btn-outline-danger:before {
+  @extend .btn_before;
+  background: linear-gradient(
+    45deg,
+    lighten($danger, 30),
+    lighten($danger, 15),
+    $danger,
+    darken($danger, 30),
+    darken($danger, 50),
+    darken($danger, 30),
+    $danger,
+    lighten($danger, 15)
+  );
+}
+
+.btn-dark:before,
+.btn-outline-dark:before {
+  @extend .btn_before;
+  background: linear-gradient(
+    45deg,
+    lighten($dark, 30),
+    lighten($dark, 15),
+    $dark,
+    darken($dark, 30),
+    darken($dark, 50),
+    darken($dark, 30),
+    $dark,
+    lighten($dark, 15)
+  );
+}
+
+.btn-light:before,
+.btn-outline-light:before {
+  @extend .btn_before;
+  background: linear-gradient(
+    45deg,
+    lighten($light, 30),
+    lighten($light, 15),
+    $light,
+    darken($light, 30),
+    darken($light, 50),
+    darken($light, 30),
+    $light,
+    lighten($light, 15)
+  );
+}
+
+.btn:active:after {
+  background: transparent;
+}
+
+.btn:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 5px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  25% {
+    background-position: 200% 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  75% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}

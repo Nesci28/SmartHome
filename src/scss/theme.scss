@@ -1,0 +1,31 @@
+@import './_variables.scss';
+
+@import './components/background.scss';
+@import './components/others.scss';
+
+@import './components/button.scss';
+@import './components/navbar.scss';
+@import './components/typography.scss';
+@import './components/table.scss';
+@import './components/forms.scss';
+@import './components/breadcrumbs.scss';
+@import './components/modal.scss';
+@import './components/toast.scss';
+@import './components/tooltip.scss';
+@import './components/popover.scss';
+@import './components/card.scss';
+@import './components/indicators.scss';
+@import './components/progress.scss';
+@import './components/list.scss';
+
+@import './reset.scss';
+
+.hidden-sm-up {
+  @media (min-width: 768px) {
+    display: none !important;
+  }
+}
+
+body {
+  @extend .bg-dark;
+}

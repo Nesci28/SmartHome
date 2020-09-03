@@ -1,0 +1,17 @@
+.toast {
+  background-color: $light;
+  border-color: $dark;
+}
+
+.toast-header {
+  background-color: $dark;
+  color: $light;
+  border-color: $dark;
+  border-bottom: 1px solid $dark;
+  background-clip: unset;
+}
+
+.toast-body {
+  color: $light;
+  background: lighten($dark, 10%);
+}

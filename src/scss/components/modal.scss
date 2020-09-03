@@ -1,0 +1,24 @@
+.modal {
+  border-color: $dark;
+}
+
+.modal-content {
+  background-color: $light;
+}
+
+.modal-header {
+  background-color: darken($dark, 10%);
+  color: $light;
+  border-color: darken($dark, 10%);
+}
+
+.modal-body {
+  background: lighten($dark, 10%);
+  color: $light;
+  border-color: $dark;
+}
+
+.modal-footer {
+  background: lighten($dark, 10%);
+  border-color: $dark;
+}

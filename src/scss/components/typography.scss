@@ -1,0 +1,120 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+small,
+b,
+i,
+p,
+span {
+  color: $light;
+}
+
+.text-muted {
+  color: $dark;
+}
+
+.lead {
+  color: $light;
+  font-weight: bold;
+}
+
+a {
+  cursor: pointer;
+  color: $primary;
+  font-weight: bold;
+  text-decoration: underline;
+
+  &:hover {
+    color: lighten($primary, 10%);
+  }
+
+  &:not([href]) {
+    color: darken($primary, 10%);
+  }
+  &:not([href]):hover {
+    color: $primary;
+  }
+}
+
+.text {
+  &-primary {
+    color: $primary !important;
+  }
+  &-secondary {
+    color: $secondary !important;
+  }
+  &-info {
+    color: $info !important;
+  }
+  &-success {
+    color: $success !important;
+  }
+  &-warning {
+    color: $warning !important;
+  }
+  &-danger {
+    color: $danger !important;
+  }
+  &-dark {
+    color: darken($dark, 10%) !important;
+  }
+  &-light {
+    color: $light !important;
+  }
+}
+
+.blockquote {
+  color: darken($light, 10%);
+
+  &:before,
+  &:after {
+    font-size: 6rem;
+    line-height: 0.1rem;
+  }
+
+  &:before {
+    content: open-quote;
+    margin-right: 1.25rem;
+    vertical-align: -2.4rem;
+  }
+  &:after {
+    content: close-quote;
+    margin-left: 1.25rem;
+    vertical-align: -4rem;
+  }
+
+  &-footer {
+    color: darken($light, 20%);
+    display: inline-block;
+  }
+}
+
+.text {
+  &-primary {
+    color: $primary;
+  }
+  &-secondary {
+    color: $secondary;
+  }
+  &-info {
+    color: $info;
+  }
+  &-success {
+    color: $success;
+  }
+  &-warning {
+    color: $warning;
+  }
+  &-danger {
+    color: $danger;
+  }
+  &-light {
+    color: $light;
+  }
+  &-dark {
+    color: $dark;
+  }
+}

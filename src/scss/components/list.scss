@@ -1,0 +1,20 @@
+.list-group-item {
+  background-color: $dark;
+  color: $light;
+}
+
+.list-group-item.active {
+  background-color: $primary;
+  color: $light;
+  border: $dark;
+}
+.list-group-item-action:hover,
+.list-group-item-action:focus {
+  background-color: lighten($dark, 10%);
+}
+
+.list-group-item.disabled,
+.list-group-item:disabled {
+  background-color: lighten($dark, 10%);
+  color: darken($light, 10%);
+}

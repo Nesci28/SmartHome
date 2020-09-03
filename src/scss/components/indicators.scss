@@ -1,0 +1,113 @@
+.alert {
+  text-align: left;
+  border-color: $dark;
+
+  &-primary {
+    background: $primary;
+    color: $light;
+  }
+  &-secondary {
+    background: $secondary;
+    color: $light;
+  }
+  &-info {
+    background: $info;
+    color: $light;
+  }
+  &-success {
+    background: $success;
+    color: $light;
+  }
+  &-warning {
+    background: $warning;
+    color: $dark;
+
+    & p {
+      color: $dark;
+    }
+  }
+  &-danger {
+    background: $danger;
+    color: $light;
+  }
+  &-dark {
+    background: $dark;
+    color: $light;
+  }
+  &-light {
+    background: $light;
+    color: $dark;
+  }
+}
+
+.alert-primary .alert-link {
+  color: darken($light, 10%);
+  font-weight: bold;
+}
+.alert-secondary .alert-link {
+  color: darken($light, 10%);
+  font-weight: bold;
+}
+.alert-info .alert-link {
+  color: darken($light, 10%);
+  font-weight: bold;
+}
+.alert-success .alert-link {
+  color: darken($light, 10%);
+  font-weight: bold;
+}
+.alert-warning .alert-link {
+  color: darken($dark, 10%);
+  font-weight: bold;
+}
+.alert-danger .alert-link {
+  color: darken($light, 10%);
+  font-weight: bold;
+}
+.alert-dark .alert-link {
+  color: darken($light, 10%);
+  font-weight: bold;
+}
+.alert-light .alert-link {
+  color: darken($dark, 10%);
+  font-weight: bold;
+}
+
+.badge {
+  &-primary {
+    background-color: $primary;
+    color: $light;
+  }
+  &-secondary {
+    background-color: $secondary;
+    color: $light;
+  }
+  &-info {
+    background-color: $info;
+    color: $light;
+  }
+  &-success {
+    background-color: $success;
+    color: $light;
+  }
+  &-warning {
+    background-color: $warning;
+    color: $light;
+  }
+  &-danger {
+    background-color: $danger;
+    color: $light;
+  }
+  &-dark {
+    background-color: $dark;
+    color: $light;
+  }
+  &-light {
+    background-color: $light;
+    color: $dark;
+  }
+  &-primary {
+    background-color: $primary;
+    color: $light;
+  }
+}

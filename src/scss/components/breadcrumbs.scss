@@ -1,0 +1,21 @@
+.breadcrumb {
+  &-primary {
+    background-color: $primary;
+    color: $light;
+
+    & a {
+      color: $light;
+      &:hover {
+        color: darken($light, 10%);
+      }
+    }
+  }
+  &-light {
+    background-color: $light;
+    color: $dark;
+  }
+  &-dark {
+    background-color: $dark;
+    color: $light;
+  }
+}

@@ -1,0 +1,105 @@
+.sidebar-primary .ng-sidebar {
+  padding: 1rem;
+  background-color: $primary;
+  color: $light;
+}
+
+.sidebar-dark .ng-sidebar {
+  padding: 1rem;
+  background-color: darken($dark, 10%);
+  color: $light;
+}
+
+.sidebar-light .ng-sidebar {
+  padding: 1rem;
+  background-color: $light;
+  color: $dark;
+}
+
+.navbar {
+  &-primary {
+    background-color: $primary;
+    color: $light;
+  }
+
+  &-dark {
+    background-color: darken($dark, 10%);
+    color: $light;
+  }
+
+  &-light {
+    background-color: $light;
+    color: $dark;
+  }
+}
+
+.navbar-primary .navbar-toggler {
+  border-color: $dark;
+}
+.navbar-primary .navbar-toggler .navbar-toggler-icon {
+  color: $dark;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.nav-link {
+  cursor: pointer;
+  color: $light;
+}
+.nav-link:hover {
+  color: darken($light, 10%);
+}
+.navbar-dark .collapse.show .dropdown-menu,
+.navbar-dark .collapse.show .dropdown-menu p {
+  background-color: $light;
+  color: $dark;
+}
+.navbar-dark .collapse.show .dropdown-menu p:hover {
+  background-color: $primary;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 25px;
+  height: 3px;
+  background-color: $light;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-5px, 5px);
+  transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-5px, -5px);
+  transform: rotate(45deg) translate(-5px, -5px);
+}
+
+.collapse {
+  transition: all 0.5s ease-out;
+  display: block !important;
+  overflow: hidden !important;
+  max-height: 0;
+}
+
+.collapse.show {
+  transition: all 0.5s ease-in;
+}
+
+.sidebar-primary .nav-link,
+.navbar-primary .nav-link {
+  color: $light;
+}
+.sidebar-primary .nav-link:hover,
+.navbar-primary .nav-link:hover {
+  color: darken($light, 10%);
+}
