@@ -6,38 +6,53 @@ import Button from 'react-bootstrap/Button';
 import logo from '../../assets/logo.webp';
 import CardComponent from '../card/Card';
 
-interface ISmartThing {
+import isDevMode from '../../utils/isDevMode';
+
+interface ISmartThings {
   ip: string;
   title: string;
   animation: string;
   ws: WebSocket | undefined;
 }
 
-class App extends Component {
-  smartThings: ISmartThing[] = [
-    {
-      ip: '192.168.0.230',
-      title: 'Salon',
-      animation: '26',
-      ws: undefined,
-    },
-    {
-      ip: '192.168.0.231',
-      title: 'Cuisine',
-      animation: '1',
-      ws: undefined,
-    },
-  ];
+interface IState {
+  smartThings: ISmartThings[];
+}
 
+class App extends Component<any, IState> {
   counter: number = 0;
+  interval: number = 0;
+
+  constructor(props: any) {
+    super(props);
+    this.updateAnimation = this.updateAnimation.bind(this);
+    this.state = {
+      smartThings: [
+        {
+          ip: '192.168.0.230',
+          title: 'Salon',
+          animation: '26',
+          ws: undefined,
+        },
+        {
+          ip: '192.168.0.231',
+          title: 'Cuisine',
+          animation: '1',
+          ws: undefined,
+        },
+      ],
+    };
+
+    this.updateAnimation = this.updateAnimation.bind(this);
+  }
 
   componentDidMount() {
-    this.smartThings.forEach((smartThing) => {
+    this.state.smartThings.forEach((smartThing) => {
       smartThing.ws = new WebSocket(`ws://${smartThing.ip}:81`);
       smartThing.ws.onopen = () => {
         console.log(`WebSocket Client Connected: ${smartThing.ip}`);
         this.counter++;
-        if (this.counter === this.smartThings.length) {
+        if (this.counter === this.state.smartThings.length || isDevMode()) {
           this.forceUpdate();
         }
       };
@@ -46,22 +61,29 @@ class App extends Component {
 
   off = () => {
     let counter = 0;
-    const interval = setInterval(() => {
+    this.interval = window.setInterval(() => {
       counter++;
-      this.smartThings.forEach((smartThing) => {
+      this.state.smartThings.forEach((smartThing) => {
         smartThing.ws!.send('O_9999');
       });
       if (counter === 100) {
-        clearInterval(interval);
+        clearInterval(this.interval);
         return;
       }
     }, 100);
   };
 
   on = () => {
-    this.smartThings.forEach((smartThing) => {
+    clearInterval(this.interval);
+    this.state.smartThings.forEach((smartThing) => {
       smartThing.ws!.send(`F_${smartThing.animation}`);
     });
+  };
+
+  updateAnimation = (e: any, i: number): void => {
+    const newObject = JSON.parse(JSON.stringify(this.state.smartThings));
+    newObject[i].animation = e;
+    this.setState({ smartThings: newObject });
   };
 
   render() {
@@ -74,7 +96,7 @@ class App extends Component {
           width="250px"
           height="auto"
         />
-        {this.counter === this.smartThings.length ? (
+        {this.counter === this.state.smartThings.length || isDevMode() ? (
           <div>
             <div className="d-flex justify-content-center mb-5">
               <Button className="btn btn-secondary mr-5" onClick={this.off}>
@@ -85,7 +107,7 @@ class App extends Component {
               </Button>
             </div>
             <div className="row mx-0">
-              {this.smartThings.map((smartThing) => {
+              {this.state.smartThings.map((smartThing, i) => {
                 return (
                   smartThing.ws && (
                     <div key={smartThing.ip} className="col-md-6 mb-3">
@@ -94,6 +116,8 @@ class App extends Component {
                         ip={smartThing.ip}
                         animation={smartThing.animation}
                         ws={smartThing.ws as WebSocket}
+                        index={i}
+                        updateAnimation={this.updateAnimation}
                       ></CardComponent>
                     </div>
                   )

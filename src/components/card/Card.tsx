@@ -10,6 +10,8 @@ interface CardProps {
   ip: string;
   animation: string;
   ws: WebSocket;
+  index: number;
+  updateAnimation: (animationNumber: string, i: number) => void;
 }
 
 interface IState {
@@ -21,6 +23,40 @@ class CardComponent extends Component<CardProps, IState> {
   ip = this.props.ip;
   animation = this.props.animation;
   ws = this.props.ws;
+  index = this.props.index;
+  updateAnimation = this.props.updateAnimation;
+
+  interval: number = 0;
+  animationNames: string[] = [
+    'Rainbow Fade',
+    'Rainbow Loop',
+    'Rainbow Loop 2',
+    'Random March',
+    'RGB Propeller',
+    'Rotating Red-Blue',
+    'Fire',
+    'Blue Fire',
+    'Random Bars',
+    'Flicker',
+    'Random Color',
+    'Sparkle',
+    'Color Bounce',
+    'Color Bounce Fade',
+    'Blue-Red Bounce',
+    'Rainbow Vertical',
+    'Matrix',
+    'RWB March',
+    'Flame',
+    'Theater Chase',
+    'Strobe',
+    'Police Blinker',
+    'Kitt',
+    'Rule',
+    'Fade Vertical',
+    'Runner Chameleon',
+    'Blende',
+    'Blende 2',
+  ];
 
   constructor(props: CardProps) {
     super(props);
@@ -36,16 +72,17 @@ class CardComponent extends Component<CardProps, IState> {
 
   off = (): void => {
     let counter = 0;
-    const interval = setInterval(() => {
+    this.interval = window.setInterval(() => {
       counter++;
       this.ws.send('O_9999');
       if (counter === 100) {
-        clearInterval(interval);
+        clearInterval(this.interval);
       }
     }, 100);
   };
 
   on = (): void => {
+    clearInterval(this.interval);
     this.ws.send(`F_${this.animation}`);
   };
 
@@ -53,6 +90,11 @@ class CardComponent extends Component<CardProps, IState> {
     this.setState({ range: e.target.value });
     this.ws.send(`B_${e.target.value}`);
   };
+
+  updateAnimationLocal(animation: string): void {
+    console.log('animation :>> ', animation);
+    this.ws.send(`F_${animation}`);
+  }
 
   render() {
     return (
@@ -62,7 +104,23 @@ class CardComponent extends Component<CardProps, IState> {
           <Card.Body>
             {this.ip ? (
               <div>
-                <Card.Text>IP: {this.ip}</Card.Text>
+                <div className="d-flex">
+                  <Card.Text className="w-50">IP: {this.ip}</Card.Text>
+                  <select
+                    className="form-control w-50"
+                    defaultValue={this.animation}
+                    onChange={(e) => {
+                      this.updateAnimationLocal(e.target.value);
+                      this.updateAnimation(e.target.value, this.index);
+                    }}
+                  >
+                    {this.animationNames.map((animationName, i) => (
+                      <option key={animationName} value={i}>
+                        {animationName}
+                      </option>
+                    ))}
+                  </select>
+                </div>
                 <div className="mt-2 d-flex">
                   <Form.Control
                     onChange={(e) => this.changeBrightness(e)}
