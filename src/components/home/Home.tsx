@@ -29,12 +29,17 @@ class App extends Component {
     },
   ];
 
+  counter: number = 0;
+
   componentDidMount() {
     this.smartThings.forEach((smartThing) => {
       smartThing.ws = new WebSocket(`ws://${smartThing.ip}:81`);
       smartThing.ws.onopen = () => {
         console.log(`WebSocket Client Connected: ${smartThing.ip}`);
-        this.forceUpdate();
+        this.counter++;
+        if (this.counter === this.smartThings.length) {
+          this.forceUpdate();
+        }
       };
     });
   }
@@ -69,30 +74,41 @@ class App extends Component {
           width="250px"
           height="auto"
         />
-        <div className="d-flex justify-content-center mb-5">
-          <Button className="btn btn-secondary mr-5" onClick={this.off}>
-            All Off
-          </Button>
-          <Button className="btn btn-primary" onClick={this.on}>
-            All On
-          </Button>
-        </div>
-        <div className="row mx-0">
-          {this.smartThings.map((smartThing) => {
-            return (
-              smartThing.ws && (
-                <div key={smartThing.ip} className="col-md-6 mb-3">
-                  <CardComponent
-                    title={smartThing.title}
-                    ip={smartThing.ip}
-                    animation={smartThing.animation}
-                    ws={smartThing.ws as WebSocket}
-                  ></CardComponent>
-                </div>
-              )
-            );
-          })}
-        </div>
+        {this.counter === this.smartThings.length ? (
+          <div>
+            <div className="d-flex justify-content-center mb-5">
+              <Button className="btn btn-secondary mr-5" onClick={this.off}>
+                All Off
+              </Button>
+              <Button className="btn btn-primary" onClick={this.on}>
+                All On
+              </Button>
+            </div>
+            <div className="row mx-0">
+              {this.smartThings.map((smartThing) => {
+                return (
+                  smartThing.ws && (
+                    <div key={smartThing.ip} className="col-md-6 mb-3">
+                      <CardComponent
+                        title={smartThing.title}
+                        ip={smartThing.ip}
+                        animation={smartThing.animation}
+                        ws={smartThing.ws as WebSocket}
+                      ></CardComponent>
+                    </div>
+                  )
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <div className="d-flex justify-content-center align-items-center">
+            <div className="lds-ripple">
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
