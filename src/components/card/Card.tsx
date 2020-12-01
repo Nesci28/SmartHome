@@ -92,7 +92,6 @@ class CardComponent extends Component<CardProps, IState> {
   };
 
   updateAnimationLocal(animation: string): void {
-    console.log('animation :>> ', animation);
     this.ws.send(`F_${animation}`);
   }
 
